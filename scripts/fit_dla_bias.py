@@ -17,10 +17,12 @@ full bin range, so the model is compared after subtracting its RR-weighted mean 
 constraint).  We fit the single amplitude b^2 by weighted least squares over a clean dv range.
 
 IMPORTANT CAVEATS baked into the output (see notes/dla_clustering_science.md sec 5):
- * The mock truth dv is REDSHIFT-SPACE; the template is real-space.  A real-space fit returns
-   an APPARENT bias inflated by the Kaiser LOS factor ~ (1+beta), beta=f/b.  We report both
-   the apparent b and the RSD-deconvolved real-space b, and treat the result as a
-   constraint/limit, not a precision measurement.
+ * The mock truth dv is REDSHIFT-SPACE; the template is real-space, so a real-space fit returns
+   an APPARENT bias offset by redshift-space distortions.  Note the textbook (1+beta) factor
+   (beta=f/b) is the mu=1 POWER-spectrum boost; the line-of-sight CORRELATION-function boost is
+   the Kaiser multipole sum xi0+xi2+xi4, which is much smaller (the negative quadrupole cancels
+   most of the monopole along mu=1), so the offset is modest (ceiling ~1.17 on b).  We calibrate
+   it empirically (k = B_TRUE/b_app(truth); see main) and treat the result as a constraint/limit.
  * Small-dv bins are triply compromised (incompleteness, fingers-of-god, linear-bias
    breakdown), so the fit uses dv in [DV_LO, DV_HI].
 
@@ -516,18 +518,20 @@ def main():
     # EMPIRICAL RSD CALIBRATION (apparent bias -> real-space bias).
     #
     # Why a correction is needed: our template is REAL-space, but the mock's dv
-    # separations are in REDSHIFT space. Peculiar infall velocities (the Kaiser
-    # effect) compress structure along the line of sight, BOOSTING the apparent
-    # clustering. In the textbook linear Kaiser picture the line-of-sight monopole
-    # is enhanced by ~(1+beta)^2 with beta = f/b, so a real-space-template fit
-    # returns an INFLATED apparent bias b_app > b_true.
+    # separations are in REDSHIFT space. Be careful which object carries the Kaiser
+    # factor: (1+beta)^2 with beta=f/b is the mu=1 boost of the POWER SPECTRUM,
+    # P(k,mu=1)=(1+beta)^2 P_r(k). Our estimator measures the line-of-sight
+    # CORRELATION function, which is the Kaiser multipole sum xi(s,mu=1)=xi0+xi2+xi4
+    # (Hamilton 1992). For a declining xi the positive monopole (~1.37 on xi) is
+    # largely cancelled by the NEGATIVE quadrupole along mu=1, so the net LOS boost
+    # is only a few percent (ceiling ~1.17 on b, the monopole-only factor) -- NOT a
+    # factor ~(1+beta). b_app is therefore only modestly offset from b_true.
     #
-    # Why we DON'T just apply the theoretical Kaiser factor: our estimator counts
-    # only strictly-along-the-LOS pairs (mu = cos(angle to LOS) = 1). For mu=1 the
-    # clean (1 + beta mu^2)-type Kaiser formula does NOT apply as written, and the
-    # small scales are further contaminated by fingers-of-god (the opposite,
-    # de-correlating effect from virial velocities). The true apparent->real map is
-    # therefore messy and scale-dependent -- not a clean analytic factor.
+    # Why we DON'T apply an analytic factor: the LOS-xi Kaiser boost is small and
+    # scale-dependent, the lowest dv bins carry residual nonlinearity, and
+    # fingers-of-god (virial velocities) smear only the smallest scales (~1.5-3
+    # Mpc/h, below the first fit bin). These do not net to a clean analytic factor,
+    # so we fold them into one empirical number measured against the known answer.
     #
     # Instead we CALIBRATE it empirically off the mock: we know the planted b=2, so
     # whatever apparent b_app we recover on the TRUTH catalog defines the conversion
