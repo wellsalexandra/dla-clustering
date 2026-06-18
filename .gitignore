@@ -1,0 +1,9 @@
+# caches / bytecode
+__pycache__/
+*.pyc
+# jupyter autosaves
+.ipynb_checkpoints/
+# transient run logs
+outputs/*.log
+# (uncomment to regenerate artifacts instead of tracking them)
+# outputs/
