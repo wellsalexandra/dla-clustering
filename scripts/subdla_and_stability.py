@@ -119,9 +119,8 @@ def fitb(r, opx, RR, dv_lo, dv_hi, label):
     GP fits and the truth counts (rt["DD"]) for truth fits -- the count that actually
     underlies the curve being fitted.
     """
-    err = np.where(r["rt"]["DD"] > 0, opx / np.sqrt(np.maximum(r["rf"]["DD"] if "gp" in label else r["rt"]["DD"], 1)), np.inf)
     # use Poisson on the appropriate DD: GP fits weight by the GP pair counts, truth fits
-    # by the truth pair counts. (This line supersedes the one above.)
+    # by the truth pair counts.
     DDref = r["rf"]["DD"] if "GP" in label else r["rt"]["DD"]
     err = np.where(DDref > 0, opx / np.sqrt(np.maximum(DDref, 1)), np.inf)
     # fit_bapp does the weighted least-squares amplitude fit against the IC-subtracted

@@ -37,7 +37,7 @@ some spurious ones (false positives -> impurity). Both distort clustering. So we
     purity p(dv), then correct the GP pair counts and re-measure xi.
 If the corrected GP curve lands on the truth curve, the correction works.
 
-Pipeline (see ../notes/dla_clustering_science.md and ../notes/science_bugs.md):
+Pipeline (see ../notes/appendix.md and ../notes/science_bugs.md):
   1. Load truth + finder + zcat + bal; apply MATCHED selection to both
      (NHI>=20.3 both members, SNR_REDSIDE>2, P_DLA>0.99, DLAFLAG==0, 2<z_QSO<4.25,
      (1+z)-correct forest/proximity window, drop BAL sightlines and Lyb/Lyg ghosts).

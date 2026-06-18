@@ -16,7 +16,7 @@ Integral constraint: the count-preserving-randoms estimator enforces sum(RR*xi)=
 full bin range, so the model is compared after subtracting its RR-weighted mean (same
 constraint).  We fit the single amplitude b^2 by weighted least squares over a clean dv range.
 
-IMPORTANT CAVEATS baked into the output (see notes/dla_clustering_science.md sec 5):
+IMPORTANT CAVEATS baked into the output (see notes/appendix.md §A2):
  * The mock truth dv is REDSHIFT-SPACE; the template is real-space, so a real-space fit returns
    an APPARENT bias offset by redshift-space distortions.  Note the textbook (1+beta) factor
    (beta=f/b) is the mu=1 POWER-spectrum boost; the line-of-sight CORRELATION-function boost is

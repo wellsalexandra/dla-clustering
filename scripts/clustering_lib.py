@@ -2,7 +2,7 @@
 clustering_lib.py — engine for 1D line-of-sight DLA clustering on the DESI 2LPT mock.
 
 This is the corrected re-implementation of the logic in the student notebook
-``dla_1d_clustering_updated.ipynb``. See ../notes/dla_clustering_science.md for the
+``dla_1d_clustering_updated.ipynb``. See ../notes/science_bugs.md for the
 science and ../notes/science_bugs.md / ../notes/coding_bugs.md for what was wrong.
 
 Design (fixes keyed to science_bugs.md):

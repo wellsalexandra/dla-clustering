@@ -25,8 +25,10 @@ calibrates purity + completeness, and fits the linear DLA bias.
 - **`fit_dla_bias.py`** — fits the linear bias (EH98 ξ_matter, self-contained) → `outputs/bias_fit.png`.
 - **`subdla_and_stability.py`** — the sub-DLA (NHI>20) variant and a GP bias-fit stability sweep.
 
+**Data:** the measurement scripts read the 2LPT mock catalogs from absolute paths on this cluster (`TRUTH_PATH`/`FINDER_PATH`/… in `scripts/clustering_lib.py`); edit those to run elsewhere. The tutorials and `pytest tests/` need no data.
+
 ### Tests
-- **`tests/test_physics.py`**, **`tests/test_matching.py`** — 28 self-contained unit tests (cosmology + estimator; truth↔finder matching & completeness/purity calibration). Run `pytest tests/`.
+- **`tests/test_physics.py`**, **`tests/test_matching.py`**, **`tests/test_camb_consistency.py`** — 33 self-contained unit tests (cosmology + estimator; truth↔finder matching & completeness/purity calibration; EH98 template vs CAMB at the linear-P(k) level). Run `pytest tests/`.
 
 ### Notebooks & outputs
 - **`dla_clustering_tutorial.ipynb`** — the method top-to-bottom with the physics (start here for learning).
