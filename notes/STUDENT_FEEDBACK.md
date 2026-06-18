@@ -64,7 +64,7 @@ known.
   spectrum, not of the line-of-sight correlation function we fit. The radial correlation function
   is the Kaiser multipole sum ξ0+ξ2+ξ4, whose net line-of-sight boost is modest (a few percent, at
   most ~17% on b, because the negative quadrupole largely cancels the monopole), and
-  fingers-of-god act only below ~3 Mpc/h (below the first fitted bin), so we fold the small residual
+  fingers-of-god act only below ~3 Mpc/h (below the first fitted bin; likely true but could be wrong, since the ~3 Mpc/h scale rests on an assumed velocity dispersion σ_v≈200-300 km/s), so we fold the small residual
   into the empirical calibration factor k rather than applying an analytic correction.
 - On the GP catalog (the Gaussian-process DLA finder) you can only set a 2σ upper limit, b < 2.8,
   because the clustering signal lives at Δv < 1500 km/s, entirely below the GP close-pair sampler
@@ -94,7 +94,7 @@ yours to own.
   into the analytic randoms (`randoms_tutorial.ipynb` §4).
 - Generalize beyond truth and mock-0. Apply the pipeline to other mocks and to real data, where
   the FP / Lyβ-Lyγ veto and the z-dependence of purity/completeness all need re-checking; flags
-  that are inert on this mock won't be on real data.
+  that are inert on this mock won't be on real data (likely true but could be wrong: expected on physical grounds, not yet checked on real data).
 
 None of this is leftover cleanup; this is the project. Pick the piece that grabs you and dig in.
 
@@ -109,5 +109,5 @@ None of this is leftover cleanup; this is the project. Pick the piece that grabs
 - Re-implement the randoms yourself from the three rules above, then diff against
   `clustering_lib.random_pair_hist`. Doing beats reading.
 - Use the notebooks' "predict before you run" checkpoints: guess, then check.
-- The null test in the randoms tutorial (random-vs-random gives ξ≈1) is your "do I really get it?"
+- The null test in the randoms tutorial (random-vs-random gives 1+ξ≈1, i.e. ξ≈0) is your "do I really get it?"
   self-check. If you can explain why it must give ≈1, you've understood randoms.

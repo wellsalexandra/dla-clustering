@@ -77,13 +77,13 @@ $k = 2/b_{\rm app}({\rm truth})$ accordingly comes out slightly below 1.
 
 Fingers-of-god, the small-scale smearing from the virial velocity dispersion, act only on
 scales of a few Mpc/$h$: $\sigma_v(1+z)/H(z)\cdot h \approx 1.5$ to $3$ Mpc/$h$ for
-$\sigma_v\approx 200$ to $300$ km/s. That is below our first fitted bin
+$\sigma_v\approx 200$ to $300$ km/s (this dispersion is assumed, not measured from the mock; needs more investigation). That is below our first fitted bin
 ($\Delta v\ge250$ km/s is $r\approx2.4$ Mpc/$h$ for the truth fit; the GP fit starts near
 $r\approx19$ Mpc/$h$), so fingers-of-god touch at most the lowest bin, not the whole fit.
 
 Putting these together: the linear line-of-sight RSD effect is small and mildly suppressive over the
 fit range, so the truth fit's $b_{\rm app}\approx2.2$ (about 10% above the planted 2.0) is driven by
-residual small-scale nonlinearity and the approximate template, not by an RSD boost. There is no
+residual small-scale nonlinearity and the approximate template, not by an RSD boost (likely true but could be wrong: neither contribution is separately measured here). There is no
 large Kaiser boost being cancelled by a large fingers-of-god suppression, which is why we do not
 apply an analytic correction and instead calibrate empirically (tutorial §9.1 and §9.2).
 

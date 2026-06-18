@@ -106,8 +106,9 @@ correcting DD by 1/C_pair(Δv), with RR being the unclustered expectation under 
 **Correct:** FP detections pair at ~random Δv, adding a flat background that dilutes the small-Δv
 excess (pushes ξ→0); and the Lyβ/Lyγ "ghost" FPs create sharp spurious spikes at
 Δv ≈ 50,800 / 66,600 km/s (a real DLA's Lyβ/Lyγ trough mis-fit as a separate Lyα DLA; see the
-ghost section of `dla_clustering_tutorial.ipynb` §6). Pair purity on the verified 2LPT catalog is
-only ~0.46.
+ghost section of `dla_clustering_tutorial.ipynb` §6). After the clean cuts (`DLAFLAG==0`, ghost veto, BAL removal) the per-bin pair purity is ≈1 in
+the small-Δv bins that carry the signal (median ~0.8 over the analysed range, falling toward ~0.5
+at large Δv). Without the `DLAFLAG==0` cut it drops to ~0.46, which is why that cut matters.
 **Notebook:** DD is built from `gpp` with `SNR_REDSIDE>2 & NHI_GP>20.3 & P_DLA_GP>0.99`
 (cell 3); the next cuts to add are `DLAFLAG==0`, `LYBETA_FLAG==False`, BAL removal, and the truth
 match. Until those are in, every FP pair, including the Lyβ/Lyγ ghosts I want you to drop, sits in
