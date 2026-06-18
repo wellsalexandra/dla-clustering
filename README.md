@@ -23,6 +23,10 @@ calibrates purity + completeness, and fits the linear DLA bias.
   window-restricted randoms ≥50×, (1+z)-correct windows, truth-driven `C_pair(Δv)`, pair purity).
 - **`measure_1d_dla_clustering.py`** — runs the measurement → `outputs/clustering_2lpt.png`.
 - **`fit_dla_bias.py`** — fits the linear bias (EH98 ξ_matter, self-contained) → `outputs/bias_fit.png`.
+- **`subdla_and_stability.py`** — the sub-DLA (NHI>20) variant and a GP bias-fit stability sweep.
+
+### Tests
+- **`tests/test_physics.py`**, **`tests/test_matching.py`** — 28 self-contained unit tests (cosmology + estimator; truth↔finder matching & completeness/purity calibration). Run `pytest tests/`.
 
 ### Notebooks & outputs
 - **`dla_clustering_tutorial.ipynb`** — the method top-to-bottom with the physics (start here for learning).
@@ -37,6 +41,19 @@ calibrates purity + completeness, and fits the linear DLA bias.
 - **GP catalog → upper limit only: 2σ b < 2.8.** The clustering signal lives at Δv < 1500 km/s,
   entirely below the GP close-pair sampler floor (C_pair ≈ 0), so the GP measurement cannot detect
   the signal — only bound it. This is a physical limitation of the catalog, not an analysis choice.
+
+### Remaining work (open — for the student)
+This is a scaffold to check yourself against, **not a finished result** — and the open items are the
+interesting part (full list in `notes/STUDENT_FEEDBACK.md` → "Where this goes next"):
+- **Re-implement it yourself** from the concepts and diff against `clustering_lib` — reading ≠ understanding.
+- **Measure b, don't just bound it.** 1D LOS clustering of the GP catalog gives only a 2σ upper limit
+  (the signal is below the ~850 km/s sampler floor). Going further means improving close-pair
+  completeness at the floor, or a different probe — 3D clustering or the DLA×Lyα-forest cross-correlation.
+- **Precision refinements:** (Δv, z̄)-resolved purity/completeness; per-sightline / SNR-conditioned
+  randoms; a full sightline bootstrap carrying C_pair & purity; re-derive the RSD calibration k per
+  selection; use pyigm's measured ℓ(X, N_HI) in the analytic randoms.
+- **Generalize beyond truth & mock-0:** apply to other mocks and real data, and re-check the FP /
+  Lyβ-Lyγ veto and the z-dependence of purity/completeness there.
 
 This work was independently reviewed from CS, statistics, cosmology, and Lyα-forest perspectives — verdict: sound with minor fixes, all applied.
 
